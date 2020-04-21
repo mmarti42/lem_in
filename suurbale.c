@@ -711,12 +711,41 @@ int	collision_handle(t_paths_list *list, t_path *p1)
 	return (0);
 }
 
-void	cd(t_paths_list *l)
-{
+void	check(t_paths_list *l, t_path *p) {
+
+	t_path *pp = p->next;
+	while (pp)
+	{
+		if (p == pp)
+			printf("COOLLLL\n");
+		pp = pp->next;
+	}
+	l = l->next;
 	while (l)
 	{
-
+		pp = l->path;
+		while (pp)
+		{
+			if (p == pp)
+				printf("COOLLLL\n");
+			pp = pp->next;
+		}
+		l = l->next;
 	}
+}
+
+void	cd(t_paths_list *l)
+{
+	while (l) {
+		t_path *p = l->path;
+		while (p)
+		{
+			check(l, p);
+			p = p->next;
+		}
+		l = l->next;
+	}
+	printf("finish\n");
 }
 
 void    suurbale(t_graph *graph)
@@ -729,20 +758,18 @@ void    suurbale(t_graph *graph)
 	p_list = NULL;
 	while (max_path--)
 	{
-		if (!(p = bfs(graph)))
+		if (!(p = bfs(graph)))			//поиск в ширину (т.к. граф неориентированный, Дийкстра не нужен)
 			break ;
-		collision_handle(p_list, p);
-		modify_graph(p);
-		p_list = plist_push_back(p_list, p);
-		restore(graph->rooms);
+		collision_handle(p_list, p);	//разрешение коллизий
+		modify_graph(p);				// удаление ребер, добавление информации о пути в структуры комнат
+		p_list = plist_push_back(p_list, p); // добавление пути в список путей
+		restore(graph->rooms);				// обнуление поля parent
 	}
-	int i = 0;
-//	cd(p_list);
-	while (p_list)
-	{
-		print_path(p_list->path);
-		p_list = p_list->next;
-		i++;
-	}
-	printf("%d\n", i);
+	cd(p_list);								//проверка наличия коллизий
+//	while (p_list)
+//	{
+//		print_path(p_list->path);			//вывод путей в терминал
+//		p_list = p_list->next;
+//		i++;
+//	}
 }
