@@ -146,6 +146,7 @@ t_graph	*validate_rows(char **split_buff)
 
 	if (!(graph = (t_graph*)ft_memalloc(sizeof(t_graph))))
 		exit (1);
+	graph->ants = ft_atoi(*split_buff);
 	fl.array_of_rooms_ptr = NULL;
 	fl.count_of_path = 0;
 	fl.count_of_ants = 0;
@@ -275,7 +276,8 @@ char	*create_validation_buff(void)
 	char	*line;
 	int		fd;
 
-	fd = open("../checker/maps/valid/big_sup/map_big_sup_10" , O_RDONLY);
+	fd = open("../map_25", O_RDONLY);
+	//fd = open("../checker/maps/valid/big_sup/map_big_sup_10" , O_RDONLY);
 //	fd = open("../checker/maps/valid/map_slack", O_RDONLY);
 	//fd = 0;
 //	fd = open("../42_lem-in_tools/maps/valid/big_sup/map_big_sup_10", O_RDONLY);

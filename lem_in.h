@@ -54,6 +54,7 @@ struct				s_link
 
 typedef struct			s_graph
 {
+	int				ants;
 	t_llist			*rooms;                // list of pointers to Room
 	t_room			*start;
 	t_room			*end;
@@ -121,6 +122,6 @@ void				create_end_room(t_graph *graph, char *name_coor);
 char				*create_validation_buff(void);
 t_graph				*validation(char	*buff);
 
-void				suurbale(t_graph *graph);
+t_paths_list 		*suurbale(t_graph *graph);
 
 #endif
