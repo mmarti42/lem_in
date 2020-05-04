@@ -276,7 +276,7 @@ char	*create_validation_buff(void)
 	char	*line;
 	int		fd;
 
-	fd = open("../map_25", O_RDONLY);
+	fd = open("../map", O_RDONLY);
 	//fd = open("../checker/maps/valid/big_sup/map_big_sup_10" , O_RDONLY);
 //	fd = open("../checker/maps/valid/map_slack", O_RDONLY);
 	//fd = 0;

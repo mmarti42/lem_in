@@ -81,25 +81,20 @@ typedef	struct			s_rooms
 
 typedef	struct 			s_path
 {
+	struct s_path *prev;
 	struct s_path *next;
 	t_room *r;
 }						t_path;
 
 typedef struct			s_paths_list
 {
+	int 				ants;
 	int					len;
+	t_path 				*last_ant;
+	t_path				*first_ant;
 	t_path				*path;
 	struct s_paths_list	*next;
 }						t_paths_list;
-
-// typedef struct 			s_set
-// {
-// 	int					color;
-// 	t_room				*room;
-// 	struct s_set		*parent;
-// 	struct s_set		*left;
-// 	struct s_set		*right;
-// }						t_set;
 
 void				ft_exit(const char *const str);
 
@@ -122,6 +117,7 @@ void				create_end_room(t_graph *graph, char *name_coor);
 char				*create_validation_buff(void);
 t_graph				*validation(char	*buff);
 
+void	print_ants(t_paths_list *l, int ants);
 t_paths_list 		*suurbale(t_graph *graph);
 
 #endif

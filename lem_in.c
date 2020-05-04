@@ -17,10 +17,15 @@ int main(int argc, char **argv)
 {
 	char	*buff;
 	t_graph *graph;
+	t_paths_list *p;
 
 	buff = create_validation_buff();
 	graph = validation(buff);
-	suurbale(graph);
+	if (!(p = suurbale(graph))) {
+		printf("no paths\n");
+		exit(1);
+	}
+	print_ants(p, graph->ants);
 	//printf("%s", buff);
 	return (0);
 }

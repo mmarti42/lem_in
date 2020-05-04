@@ -96,6 +96,8 @@ t_path	*p_push_begin(t_room *r, t_path *p)
 		exit (1);
 	new->r = r;
 	new->next = p;
+	if (p)
+		p->prev = new;
 	return (new);
 }
 
@@ -434,7 +436,7 @@ void print_paths(t_paths_list *p_list, int max_path)
 		p_list = p_list->next;
 		i++;
 	}
-	printf("count of paths: %d\nmaximum paths: %d", i, max_path);
+	printf("count of paths: %d\nmaximum paths: %d\n", i, max_path);
 }
 
 t_paths_list  *suurbale(t_graph *graph)
@@ -453,13 +455,13 @@ t_paths_list  *suurbale(t_graph *graph)
 			break ;
 		collision_handle(p_list, p);	//разрешение коллизий
 		modify_graph(p);				// удаление ребер, добавление информации о пути в структуры комнат
-		p_list = plist_push_back(p_list, p); // добавление пути в список путей
+		p_list = plist_push_back(p_list, p);	// добавление пути в список путей
 //		if (check_steps(p_list, graph->ants))
 //			break ;
 		restore(graph->rooms);				// обнуление поля parent
 	}
 	bubble_sort(p_list);
-	//cd(p_list);								//проверка наличия коллизий
+	cd(p_list);								//проверка наличия коллизий
 	//printf("ants: %d\n", graph->ants);
 	print_paths(p_list, max_path);
 	return (p_list);
