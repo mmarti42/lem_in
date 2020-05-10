@@ -43,7 +43,7 @@ int		atoi_for_lemin(const char *str)
 	}
 	nbr = nbr * negative;
 	if (nbr > 2147483647 || nbr < -2147483648 || x > 9 || nbr < 0)
-		ft_exit("Error\n");
+		ft_exit("Error");
 	return ((int)nbr);
 }
 
