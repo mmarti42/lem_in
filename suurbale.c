@@ -33,6 +33,7 @@ t_paths_list	*suurbale(t_graph *graph)
 		final = check_steps(p_list, final, graph->ants);
 		restore(graph, p_list);
 	}
+	free_path_list(p_list);
 	bubble_sort(final);
 	return (final);
 }

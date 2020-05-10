@@ -12,7 +12,41 @@
 
 #include "lem_in.h"
 
-int	main(void)
+void	free_links(t_link_list *l)
+{
+	if (!l)
+		return ;
+	free_links(l->next);
+	free(l->data);
+	free(l);
+}
+
+void	free_data(t_room *r)
+{
+	if (!r)
+		return ;
+	free_links(r->links);
+	free(r->name);
+	free(r);
+}
+
+void	free_rooms(t_llist *r)
+{
+	if (!r)
+		return ;
+	free_rooms(r->next);
+	free_data(r->data);
+	free(r);
+}
+
+void	free_graph(t_graph *g)
+{
+	free_rooms(g->rooms);
+	free(g->value_for_free);
+	free(g);
+}
+
+int		main(void)
 {
 	char			*buff;
 	t_graph			*graph;
@@ -28,5 +62,6 @@ int	main(void)
 	printf("%s", buff);
 	free(buff);
 	print_ants(list, graph->ants);
+	free_graph(graph);
 	return (0);
 }

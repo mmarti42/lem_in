@@ -9,15 +9,13 @@ void		recount_len(t_paths_list *l)
 	}
 }
 
-t_link_list	*del_link(t_link_list *l, t_room *r)
+t_link_list	*del_link2(t_link_list *l, t_room *r)
 {
 	t_link_list *prev;
 	t_link_list *first;
 
 	prev = NULL;
 	first = l;
-	if (!l || !l->next)
-		return (NULL);
 	while (l)
 	{
 		if (l->data->dst == r)
@@ -34,6 +32,19 @@ t_link_list	*del_link(t_link_list *l, t_room *r)
 		l = l->next;
 	}
 	return (first);
+}
+
+t_link_list	*del_link(t_link_list *l, t_room *r)
+{
+	if (!l)
+		return (NULL);
+	if (!l->next)
+	{
+		free(l->data);
+		free(l);
+		return (NULL);
+	}
+	return (del_link2(l, r));
 }
 
 int			count_links(t_room *r)

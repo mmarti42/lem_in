@@ -71,8 +71,13 @@ void	print_ants(t_paths_list *l, int ants)
 
 	step = 0;
 	if (l->len == 2)
-		return (teleport_all(l->path->next->r->name, ants));
+	{
+		teleport_all(l->path->next->r->name, ants);
+		free_path_list(l);
+		return ;
+	}
 	fill_buf(l);
 	while (print_line(l, ++step))
 		printf("\n");
+	free_path_list(l);
 }

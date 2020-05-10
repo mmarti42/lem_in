@@ -79,12 +79,14 @@ t_paths_list		*check_steps(t_paths_list *p_list,
 	if (!last_count_steps)
 	{
 		last_count_steps = count_steps(p_list, ants);
+		free_path_list(final);
 		return (lst_copy(p_list));
 	}
 	tmp = count_steps(p_list, ants);
 	if (tmp < last_count_steps)
 	{
 		last_count_steps = tmp;
+		free_path_list(final);
 		return (lst_copy(p_list));
 	}
 	return (final);

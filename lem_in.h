@@ -193,4 +193,5 @@ int						p_len(t_path *p);
 t_paths_list			*get_max(t_paths_list *l);
 void					print_ants(t_paths_list *l, int ants);
 void					fill_buf(t_paths_list *l);
+void					free_path_list(t_paths_list *l);
 #endif

@@ -40,6 +40,14 @@ t_path	*assemble_path(t_room *end, t_room *start)
 	return (p);
 }
 
+void	q_free(t_rooms *q)
+{
+	if (!q)
+		return ;
+	q_free(q->next);
+	free(q);
+}
+
 t_path	*bfs(t_graph *g)
 {
 	t_room	*w;
@@ -62,5 +70,6 @@ t_path	*bfs(t_graph *g)
 		if (!(w = q_get(&q)))
 			return (NULL);
 	}
+	q_free(q);
 	return (assemble_path(w, g->start));
 }
