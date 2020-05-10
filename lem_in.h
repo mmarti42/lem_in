@@ -181,7 +181,7 @@ t_paths_list			*plist_push_back(t_paths_list *p_list, t_path *p);
 */
 void					q_add_links(t_rooms **q, t_link_list *l,
 		t_room *parent, t_room *start);
-void					q_add_room(t_rooms **q, t_link *l);
+void					q_add_room(t_rooms **q, t_room *l);
 t_room					*q_get(t_rooms **q);
 
 void					recount_len(t_paths_list *l);

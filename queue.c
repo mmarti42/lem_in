@@ -12,14 +12,14 @@
 
 #include "lem_in.h"
 
-void	q_add_room(t_rooms **q, t_link *l)
+void	q_add_room(t_rooms **q, t_room *r)
 {
 	t_rooms			*new;
 	static t_rooms	*last;
 
 	if (!(new = (t_rooms *)ft_memalloc(sizeof(t_rooms))))
 		exit(1);
-	new->r = l->dst;
+	new->r = r;
 	new->next = NULL;
 	if (!*q)
 		*q = new;
@@ -36,7 +36,7 @@ void	q_add_links(t_rooms **q, t_link_list *l, t_room *parent, t_room *start)
 			l->data->dst != parent->parent && l->data->dst != start)
 		{
 			l->data->dst->parent = parent;
-			q_add_room(q, l->data);
+			q_add_room(q, l->data->dst);
 		}
 		l = l->next;
 	}

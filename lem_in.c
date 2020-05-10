@@ -53,16 +53,10 @@ int		main(void)
 	t_paths_list	*list;
 
 	if (!(buff = create_validation_buff()))
-	{
-		ft_putstr("Error\n");
-		exit(0);
-	}
+		ft_exit("Error");
 	graph = validation(buff);
 	if (!(list = suurbale(graph)))
-	{
-		ft_putstr("Error\n");
-		exit(0);
-	}
+		ft_exit("Error");
 	ft_printf("%s", buff);
 	free(buff);
 	print_ants(list, graph->ants);
