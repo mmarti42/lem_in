@@ -85,6 +85,7 @@ char	*create_validation_buff(void)
 {
 	char	*line;
 
-	get_next_line(0, &line);
+	if (get_next_line(0, &line) < 0)
+		return NULL;
 	return (line);
 }
