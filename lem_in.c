@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdeloise <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 20:42:09 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/02/25 20:42:16 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/05/07 14:37:59 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-
-int main(int argc, char **argv)
+int	main(void)
 {
-	char	*buff;
-	t_graph *graph;
-	t_paths_list *p;
+	char			*buff;
+	t_graph			*graph;
+	t_paths_list	*list;
 
 	buff = create_validation_buff();
 	graph = validation(buff);
-	if (!(p = suurbale(graph))) {
-		printf("no paths\n");
-		exit(1);
+	if (!(list = suurbale(graph)))
+	{
+		ft_putstr("Error\n");
+		exit(0);
 	}
-	print_ants(p, graph->ants);
-	//printf("%s", buff);
+	printf("%s", buff);
+	free(buff);
+	print_ants(list, graph->ants);
 	return (0);
 }
