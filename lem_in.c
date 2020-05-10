@@ -52,7 +52,11 @@ int		main(void)
 	t_graph			*graph;
 	t_paths_list	*list;
 
-	buff = create_validation_buff();
+	if (!(buff = create_validation_buff()))
+	{
+		ft_putstr("Error\n");
+		exit(0);
+	}
 	graph = validation(buff);
 	if (!(list = suurbale(graph)))
 	{
