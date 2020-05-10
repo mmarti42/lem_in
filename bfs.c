@@ -14,10 +14,9 @@
 
 void	recursive_add(t_room *w, t_room *p, t_room *start, t_rooms **q)
 {
-	if (w == start || w->col_fl)
+	if (w == start || w->parent)
 		return ;
 	w->parent = p;
-	w->col_fl = 1;
 	recursive_add(w->pred, w, start, q);
 	q_add_links(q, w->links, w, start);
 }
@@ -73,10 +72,7 @@ t_path	*bfs(t_graph *g)
 	while (w != g->end)
 	{
 		if (w->pred)
-		{
-			w->col_fl = 1;
 			recursive_add(w->pred, w, g->start, &q);
-		}
 		else
 			q_add_links(&q, w->links, w, g->start);
 		if (!(w = q_get(&q)))
