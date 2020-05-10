@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   ft_flag3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 16:56:29 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/05/10 16:56:29 by kdeloise         ###   ########.fr       */
+/*   Created: 2019/09/24 17:58:58 by kdeloise          #+#    #+#             */
+/*   Updated: 2019/09/24 17:58:58 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "ft_printf.h"
 
-void	free_path(t_path *p)
+void	ft_flag4(char **buff, t_fls *fl, int r)
 {
-	if (!p)
-		return ;
-	free_path(p->next);
-	free(p);
+	char *tmp;
+
+	if (r < fl->psn)
+	{
+		fl->psn -= r;
+		while (fl->psn)
+		{
+			tmp = ft_strjoin(*buff, "0");
+			free(*buff);
+			*buff = tmp;
+			fl->psn -= 1;
+			fl->wdh -= 1;
+			fl->re += 1;
+		}
+	}
 }
 
-void	free_path_list(t_paths_list *l)
+void	ft_flag5(char **buff, t_fls *fl)
 {
-	if (!l)
-		return ;
-	free_path_list(l->next);
-	free_path(l->path);
-	free(l);
+	char *tmp;
+
+	tmp = ft_strjoin(*buff, "-");
+	free(*buff);
+	*buff = tmp;
+	fl->wdh -= 1;
+	fl->re += 1;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_validation_buff.c                           :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdeloise <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 21:10:45 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/02/25 21:10:57 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/05/10 17:03:58 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ char	*create_validation_buff(void)
 	char	*line;
 
 	if (get_next_line(0, &line) < 0)
-		return NULL;
+		return (NULL);
 	return (line);
 }

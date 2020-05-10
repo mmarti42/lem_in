@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   ft_strlchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 16:56:29 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/05/10 16:56:29 by kdeloise         ###   ########.fr       */
+/*   Created: 2019/02/23 06:12:20 by jijerde           #+#    #+#             */
+/*   Updated: 2019/09/20 19:49:55 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-void	free_path(t_path *p)
+char	*ft_strlchr(const char *s, int c, int i)
 {
-	if (!p)
-		return ;
-	free_path(p->next);
-	free(p);
-}
+	char	*str;
+	int		j;
 
-void	free_path_list(t_paths_list *l)
-{
-	if (!l)
-		return ;
-	free_path_list(l->next);
-	free_path(l->path);
-	free(l);
+	j = 0;
+	str = (char *)s;
+	while (str[j] != c && j <= i)
+	{
+		if (str[j] == '\0')
+			return (NULL);
+		j++;
+	}
+	return (str + j);
 }

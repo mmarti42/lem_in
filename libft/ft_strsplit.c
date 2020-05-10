@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-#include "libft.h"
-
 static	char		**memfree(char **fr, int i)
 {
 	while (--i >= 0)

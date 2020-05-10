@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   ft_fspec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 16:56:29 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/05/10 16:56:29 by kdeloise         ###   ########.fr       */
+/*   Created: 2019/09/24 17:59:38 by kdeloise          #+#    #+#             */
+/*   Updated: 2019/09/24 17:59:38 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "ft_printf.h"
 
-void	free_path(t_path *p)
+char	*ft_fspec(t_args *ag, t_fls *fl)
 {
-	if (!p)
-		return ;
-	free_path(p->next);
-	free(p);
-}
-
-void	free_path_list(t_paths_list *l)
-{
-	if (!l)
-		return ;
-	free_path_list(l->next);
-	free_path(l->path);
-	free(l);
+	if (!fl->lnh)
+		return (ft_dtoa(fl, va_arg(ag->args, double), fl->psn));
+	else if (fl->lnh == 1)
+		return (ft_dtoa(fl, va_arg(ag->args, double), fl->psn));
+	else if (fl->lnh == 5)
+		return (ft_dtoa(fl, va_arg(ag->args, long double), fl->psn));
+	return (0);
 }

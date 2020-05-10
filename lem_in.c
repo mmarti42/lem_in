@@ -63,7 +63,7 @@ int		main(void)
 		ft_putstr("Error\n");
 		exit(0);
 	}
-	printf("%s", buff);
+	ft_printf("%s", buff);
 	free(buff);
 	print_ants(list, graph->ants);
 	free_graph(graph);

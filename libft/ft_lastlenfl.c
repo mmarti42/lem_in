@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   ft_lastlenfl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 16:56:29 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/05/10 16:56:29 by kdeloise         ###   ########.fr       */
+/*   Created: 2019/09/20 15:31:21 by kdeloise          #+#    #+#             */
+/*   Updated: 2019/09/20 15:31:23 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "ft_printf.h"
 
-void	free_path(t_path *p)
+int		lennbrf(double x)
 {
-	if (!p)
-		return ;
-	free_path(p->next);
-	free(p);
+	int	i;
+
+	i = 0;
+	if (x < 0)
+		x = x * -1.0;
+	while (x >= 1)
+	{
+		x = x / 10.0;
+		i++;
+	}
+	return (i);
 }
 
-void	free_path_list(t_paths_list *l)
+int		ft_lastbit(double x)
 {
-	if (!l)
-		return ;
-	free_path_list(l->next);
-	free_path(l->path);
-	free(l);
+	unsigned long		*ptr;
+
+	ptr = (unsigned long *)&x;
+	return (*ptr >> 63);
 }

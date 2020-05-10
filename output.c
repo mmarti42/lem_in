@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   output.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/10 16:56:38 by kdeloise          #+#    #+#             */
+/*   Updated: 2020/05/10 16:56:38 by kdeloise         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	teleport_all(char *name, int ants)
@@ -7,7 +19,7 @@ void	teleport_all(char *name, int ants)
 	i = 1;
 	while (i <= ants)
 	{
-		printf("L%d-%s ", i, name);
+		ft_printf("L%d-%s ", i, name);
 		i++;
 	}
 }
@@ -41,7 +53,7 @@ int		print_step(t_ants **buf, int step)
 	while (tmp && step--)
 	{
 		tmp->curr = tmp->curr->next;
-		printf("L%d-%s ", tmp->num, tmp->curr->r->name);
+		ft_printf("L%d-%s ", tmp->num, tmp->curr->r->name);
 		if (!tmp->curr->prev->prev)
 			return (1);
 		if (!tmp->curr->next)
@@ -78,6 +90,6 @@ void	print_ants(t_paths_list *l, int ants)
 	}
 	fill_buf(l);
 	while (print_line(l, ++step))
-		printf("\n");
+		ft_printf("\n");
 	free_path_list(l);
 }

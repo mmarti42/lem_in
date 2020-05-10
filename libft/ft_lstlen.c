@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 16:56:29 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/05/10 16:56:29 by kdeloise         ###   ########.fr       */
+/*   Created: 2018/12/28 22:02:09 by jijerde           #+#    #+#             */
+/*   Updated: 2018/12/28 22:10:20 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-void	free_path(t_path *p)
+int	ft_lstlen(t_list *forlen)
 {
-	if (!p)
-		return ;
-	free_path(p->next);
-	free(p);
-}
+	int len;
 
-void	free_path_list(t_paths_list *l)
-{
-	if (!l)
-		return ;
-	free_path_list(l->next);
-	free_path(l->path);
-	free(l);
+	if (!forlen)
+		return (0);
+	len = 1;
+	while (forlen->next)
+	{
+		forlen = forlen->next;
+		len++;
+	}
+	return (len);
 }

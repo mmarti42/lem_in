@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 20:12:11 by kdeloise          #+#    #+#             */
-/*   Updated: 2019/09/24 18:12:16 by kdeloise         ###   ########.fr       */
+/*   Updated: 2019/10/26 12:06:42 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <wchar.h>
-# include <fcntl.h>
-# include <stdio.h>
+# include "ft_printf.h"
 
 typedef struct		s_list
 {
@@ -90,4 +89,6 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+void				ft_swap(char **a, char **b);
+char				*ft_strrev(char *str);
 #endif

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jijerde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 16:56:29 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/05/10 16:56:29 by kdeloise         ###   ########.fr       */
+/*   Created: 2018/12/27 21:34:21 by jijerde           #+#    #+#             */
+/*   Updated: 2018/12/27 21:49:23 by jijerde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-void	free_path(t_path *p)
+char	*ft_ffree(char ***s)
 {
-	if (!p)
-		return ;
-	free_path(p->next);
-	free(p);
-}
+	int	i;
 
-void	free_path_list(t_paths_list *l)
-{
-	if (!l)
-		return ;
-	free_path_list(l->next);
-	free_path(l->path);
-	free(l);
+	i = 0;
+	while ((*s)[i])
+	{
+		free((*s)[i]);
+		(*s)[i] = NULL;
+		i++;
+	}
+	*s = NULL;
+	return (NULL);
 }
