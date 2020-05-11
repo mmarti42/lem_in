@@ -18,7 +18,7 @@ void	recursive_add(t_room *w, t_room *p, t_room *start, t_rooms **q)
 		return ;
 	w->parent = p;
 	recursive_add(w->pred, w, start, q);
-	q_add_links(q,w->links, w, start);
+	q_add_links(q, w->links, w, start);
 }
 
 t_path	*p_push_begin(t_room *r, t_path *p)

@@ -22,6 +22,7 @@ void	teleport_all(char *name, int ants)
 		ft_printf("L%d-%s ", i, name);
 		i++;
 	}
+	ft_printf("\n");
 }
 
 t_ants	*buf_delete_ant(t_ants **buf, t_ants *ant)
