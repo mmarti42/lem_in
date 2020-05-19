@@ -18,7 +18,7 @@ SRC1 	= additional.c bfs.c bubble_sort.c change_graph.c\
 			check_dbl_create_arr_rooms.c check_secc.c check_steps.c\
 			collision_handle.c create_links.c create_rooms.c fill_buf.c\
 			free_func.c is_seclc.c lem_in.c output.c plist_push_back.c\
-			queue.c quick_sort.c suurbale.c util.c validation.c
+			queue.c quick_sort.c suurbale.c util.c validation.c merge.c
 
 OBJD 	= temporary
 
