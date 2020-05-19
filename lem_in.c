@@ -55,6 +55,8 @@ int		main(void)
 	if (!(buff = create_validation_buff()))
 		ft_exit("Error");
 	graph = validation(buff);
+	set_distance(graph->rooms);
+	graph->start->distance = 0;
 	if (!(list = suurbale(graph)))
 		ft_exit("Error");
 	ft_printf("%s", buff);

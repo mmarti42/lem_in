@@ -14,15 +14,10 @@
 
 void	restore_col(t_path *st, t_path *end)
 {
-	t_path *prev;
-
-	while (st != end)
-	{
-		prev = st;
-		st->r->pred = NULL;
-		st = st->next;
-		free(prev);
-	}
+	if (st == end)
+		return ;
+	restore_col(st->next, end);
+	free(st);
 }
 
 t_path	*get_first(t_path *p)
@@ -50,8 +45,6 @@ t_path	*remove_collision(t_path *col_start1, t_path *col_end2)
 	col_start1->next->prev = col_start1;
 	col_start2->next = col_end1->next;
 	col_start2->next->prev = col_start2;
-	mdf(get_first(col_start1));
-	mdf(get_first(col_start2));
 	free(col_end1);
 	free(col_end2);
 	return (col_start2);

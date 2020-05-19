@@ -12,7 +12,7 @@
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
-
+# define INF 10000000
 # include "libft/libft.h"
 
 typedef struct s_room	t_room;
@@ -35,10 +35,11 @@ struct					s_room
 	char			*name;
 	int				x;
 	int				y;
-	int				col_fl;
+	int				distance;
 	t_link_list		*links;
+	struct s_room	*out;
+	struct s_room	*in;
 	struct s_room	*parent;
-	struct s_room	*pred;
 };
 
 struct					s_link
@@ -83,6 +84,7 @@ typedef	struct			s_rooms
 {
 	t_room				*r;
 	struct s_rooms		*next;
+	struct s_rooms		*prev;
 }						t_rooms;
 
 typedef struct			s_ants
@@ -180,7 +182,7 @@ t_paths_list			*plist_push_back(t_paths_list *p_list, t_path *p);
 ** queue.c
 */
 void					q_add_links(t_rooms **q, t_link_list *l,
-		t_room *parent, t_room *start);
+		t_room *parent);
 void					q_add_room(t_rooms **q, t_room *l);
 t_room					*q_get(t_rooms **q);
 
@@ -194,4 +196,8 @@ t_paths_list			*get_max(t_paths_list *l);
 void					print_ants(t_paths_list *l, int ants);
 void					fill_buf(t_paths_list *l);
 void					free_path_list(t_paths_list *l);
+void					free_links(t_link_list *l);
+void					merge(t_paths_list *p_list);
+t_link_list				*del_zero_link(t_link_list *l);
+void					set_distance(t_llist *rooms);
 #endif

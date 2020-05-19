@@ -12,21 +12,10 @@
 
 #include "lem_in.h"
 
-void	pp(t_path *p)
-{
-	while (p->next)
-	{
-		if (p->prev)
-			p->r->pred = p->prev->r;
-		p = p->next;
-	}
-}
-
 void	restore_p_list(t_paths_list *l)
 {
 	while (l)
 	{
-		pp(l->path);
 		l->ants = 0;
 		l = l->next;
 	}
@@ -40,10 +29,10 @@ void	restore(t_graph *graph, t_paths_list *p_list)
 	while (rooms)
 	{
 		rooms->data->parent = NULL;
-		rooms->data->pred = NULL;
-		rooms->data->col_fl = 0;
+		rooms->data->distance = INF;
 		rooms = rooms->next;
 	}
+	graph->start->distance = 0;
 	restore_p_list(p_list);
 }
 
@@ -52,18 +41,6 @@ void	modify_graph(t_path *p)
 	while (p->next)
 	{
 		p->r->links = del_link(p->r->links, p->next->r);
-		if (p->prev)
-			p->r->pred = p->prev->r;
-		p = p->next;
-	}
-}
-
-void	mdf(t_path *p)
-{
-	while (p->next)
-	{
-		if (p->prev)
-			p->r->pred = p->prev->r;
 		p = p->next;
 	}
 }

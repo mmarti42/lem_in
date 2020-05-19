@@ -12,13 +12,13 @@
 
 #include "lem_in.h"
 
-void	recursive_add(t_room *w, t_room *p, t_room *start, t_rooms **q)
+void	set_distance(t_llist *rooms)
 {
-	if (w == start)
-		return ;
-	w->parent = p;
-	recursive_add(w->pred, w, start, q);
-	q_add_links(q, w->links, w, start);
+	while (rooms)
+	{
+		rooms->data->distance = INF;
+		rooms = rooms->next;
+	}
 }
 
 t_path	*p_push_begin(t_room *r, t_path *p)
@@ -66,15 +66,12 @@ t_path	*bfs(t_graph *g)
 
 	w = g->start;
 	q = NULL;
-	q_add_links(&q, w->links, w, g->start);
+	q_add_links(&q, w->links, w);
 	if (!(w = q_get(&q)))
 		return (NULL);
 	while (w != g->end)
 	{
-		if (w->pred && !w->pred->parent)
-			recursive_add(w->pred, w, g->start, &q);
-		else if (!w->pred)
-			q_add_links(&q, w->links, w, g->start);
+		q_add_links(&q, w->links, w);
 		if (!(w = q_get(&q)))
 			return (NULL);
 	}
