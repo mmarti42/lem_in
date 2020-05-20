@@ -44,7 +44,7 @@ $(LIBFT):	FORCE
 $(OBJD):
 	mkdir $@
 
-$(OBJD)/%.o: %.c | $(OBJD)
+$(OBJD)/%.o: %.c ./lem_in.h | $(OBJD)
 	gcc -g $(CFLAGS) $(HDR) $(LIBFT_HDR) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT) ./lem_in.h
